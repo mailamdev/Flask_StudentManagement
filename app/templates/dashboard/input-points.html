@@ -1,0 +1,80 @@
+{% extends "dashboard/index.html" %}
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet"/>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><em class="fa fa-home"></em></a></li>
+                <li class="active">Nhập bảng điểm</li>
+            </ol>
+            <div class="col-lg-12">
+                <h3 class="title">Chọn môn học - lớp - học kỳ cần nhập điểm: </h3>
+                <form>
+                    <div class="row row-space">
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label>Chọn môn học: </label>
+                                <select name="monhoc" id="monhoc" class="form-control">
+                                    <option disabled="disabled" selected="selected">---</option>
+                                    {% for mh in dsMH %}
+                                    <option value="{{ mh.maMH }}">{{ mh.tenMH }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label>Chọn lớp: </label>
+                            <select name="lop" id="lop" class="form-control">
+                                <option disabled="disabled" selected="selected">---</option>
+                                {% for lop in dsLop %}
+                                <option value="{{ lop.maLop }}">{{ lop.tenLop }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label>Chọn học kỳ: </label>
+                            <select name="hocky" id="hocky" class="form-control">
+                                <option disabled="disabled" selected="selected">---</option>
+                                {% for hk in dsHK %}
+                                <option value="{{ hk.maHK }}">{{ hk.tenHK }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="button-group" style="margin:10px 30px;">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn--radius btn--green";>Xem bảng điểm</button>
+                                <button type="button" class="btn btn-primary" style="color:#FFFFFF">Nhập điểm</button>
+                                <button type="reset" class="btn btn-secondary" style="color:#FFFFFF; background-color:#717786";>Hủy bỏ</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <h3>Bảng Điểm</h3>
+                <table class="table">
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ Tên</th>
+                        <th>Điểm 15 phút</th>
+                        <th>Điểm 1 tiết</th>
+                        <th>Điểm cuối kỳ</th>
+                        <th>Điểm trung bình</th>
+                    </tr>
+                    {% for hs in students %}
+                    <tr>
+                        <td>{{ hs.maHS }}</td>
+                        <td>{{ hs.tenHS }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

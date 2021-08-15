@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Đăng nhập</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+</head>
+<body>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+                <div class="panel-heading text-center"><h3>ĐĂNG NHẬP HỆ THỐNG</h3></div>
+				<div class="panel-body">
+                    {% if err_msg %}
+                    <div class="alert alert-danger">
+                        {{ err_msg }}
+                    </div>
+                    {% endif %}
+					<form id="login-form" class="form" action="{{ url_for('login_usr') }}" method="post">
+                        <div class="custom-dropdown">
+                            <select name="chucvu" id="chucvu" class="form-control" autofocus="">
+                                <option value="giaovien">Giáo Viên </option>
+                                <option value="giaovu">Giáo Vụ</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Tên đăng nhập:</label><br>
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Mật khẩu:</label><br>
+                            <input type="password" name="password" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Đăng Nhập" class="btn btn-danger">
+                            <button type="button" class="btn btn-warning" style="float:right;"><a  style="color:#FFFFFF" href="{{url_for('index')}}">Thoát</a></button>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.col-->
+	</div><!-- /.row -->
+
+
+<script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--CUSTOM DROPDOWN-->
+<style>
+  .custom-dropdown {
+  position: relative;
+  margin-bottom: 20px;
+  }
+
+.custom-dropdown select {
+  background-color: #31708f;
+  color: #fff;
+  font-size: inherit;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+h3 {
+    color: #3b708f;
+    font-weight: 550;
+}
+
+</style>
+</body>
+</html>

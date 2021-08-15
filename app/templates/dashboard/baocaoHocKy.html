@@ -1,0 +1,74 @@
+{% extends "dashboard/index.html" %}
+
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet"/>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><em class="fa fa-home"></em></a></li>
+                <li class="active">Lập báo cáo</li>
+            </ol>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Báo Cáo Tổng Kết Học Kỳ</h3>
+                <div class="row row-space">
+                    <div class="col-2">
+                        <h4>Học kỳ: </h4>
+                        <select name="hocky" id="hocky" class="form-control">
+                            <option disabled="disabled" selected="selected">---</option>
+                            {% for hk in dsHK %}
+                            <option value="{{ hk.maHK }}">{{ hk.tenHK }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <form>
+                    <button type="submit" class="btn btn--radius btn--green">Lưu</button>
+                    <button class="btn btn--radius" style="color:#FFFFFF; background:#717786;" type="reset">Hủy bỏ</button>
+                    <div class="card card-1">
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Lớp</th>
+                                    <th>Sĩ Số</th>
+                                    <th>Số Lượng Đạt</th>
+                                    <th>Tỷ lệ</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+<style>
+    .btn--radius {
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+    }
+
+    .btn--green {
+      background: #57b846;
+    }
+
+    .btn--green:hover {
+      background: #4dae3c;
+    }
+
+</style>
+{% endblock %}
+

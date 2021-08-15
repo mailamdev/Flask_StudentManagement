@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Chủ</title>
+    <link href="{{ url_for('static', filename='css/style_index.css') }}" rel="stylesheet"/>
+</head>
+<body>
+    <section id="hero">
+        <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+          <h1>HỆ THỐNG QUẢN LÝ HỌC SINH</h1>
+          <h2>Vui lòng đăng nhập để sử dụng các chức năng của hệ thống</h2>
+          <a href="{{ url_for('login_usr') }}" class="btn-get-started">ĐĂNG NHẬP</a>
+        </div>
+    </section>
+</body>
+</html>

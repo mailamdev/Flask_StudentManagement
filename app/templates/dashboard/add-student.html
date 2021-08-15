@@ -1,0 +1,100 @@
+{% extends "dashboard/index.html" %}
+
+{% block content %}
+<link href="{{ url_for('static', filename='css/style2.css') }}" rel="stylesheet"/>
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><em class="fa fa-home"></em></a></li>
+                <li class="active">Tiếp nhận học sinh</li>
+            </ol>
+            <div class="col-lg-12">
+                <div class="card card-1">
+                   <div class="card-body">
+                       <h2 class="title">Tiếp nhận học sinh mới</h2>
+                       <form action="/add-student" method="post">
+                           {% if noti %}
+                           <div class="alert alert-danger">
+                               {{ noti }}
+                           </div>
+                           {% endif %}
+                           <div class="row row-space">
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <label>Họ và tên: </label>
+                                       <input type="text" name="hoten" class="input--style-1" required>
+                                   </div>
+                               </div>
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <label>Địa chỉ: </label>
+                                       <input name="diachi" class="input--style-1" required>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="row row-space">
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <label for="ngaysinh">Ngày sinh:</label>
+                                       <input type="date" id="ngaysinh" name="ngaysinh" class="input--style-1" required>
+                                   </div>
+                               </div>
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <div class="rs-select2 js-select-simple select--no-search">
+                                           <label>Giới tính: </label>
+                                           <select name="gioitinh" id="gioitinh" class="form-control" required>
+                                               <option disabled="disabled" selected="selected">---</option>
+                                               <option value="Nam">Nam</option>
+                                               <option value="Nữ">Nữ</option>
+                                           </select>
+                                           <div class="select-dropdown"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="row row-space">
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <label>Email: </label>
+                                       <input name="email" id="email" class="input--style-1">
+                                   </div>
+                               </div>
+                               <div class="col-2">
+                                   <div class="input-group">
+                                       <div class="rs-select2 js-select-simple select--no-search">
+                                           <label>Lớp: </label>
+                                           <select name="lop" id="lop" class="form-control">
+                                               <option disabled="disabled" selected="selected">---</option>
+                                               {% for lop in dsLop %}
+                                               <option value="{{ lop.maLop }}">{{ lop.tenLop }}</option>
+                                               {% endfor %}
+                                           </select>
+                                           <div class="select-dropdown"></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                           <div class="row row-space">
+                               <div class="col-2">
+                                   <div>
+                                       <button class="btn btn--radius btn--green" type="submit">Lưu</button>
+                                   </div>
+                               </div>
+                               <div class="col-2">
+                                   <div>
+                                       <button class="btn btn--radius" style=" background:#717786;" type="reset">Hủy bỏ</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

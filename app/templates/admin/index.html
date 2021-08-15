@@ -1,0 +1,43 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% import 'admin/static.html' as admin_static with context %}
+{% extends 'base/base.html' %}
+
+{% if current_user.is_authenticated %}
+
+{% block sidebar %}
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="{{ url_for('static', filename='user.png') }}" class="img-responsive" alt="">
+			</div>
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name"><h4>{{ current_user.name }}</h4></div>
+					<div class="profile-usertitle-status"><h6 style="color: #5b9bd1;">{{ current_user.chucvu }}</h6></div>
+				</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<ul class="nav menu">
+			{{ layout.menu() }}
+		</ul>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><em class="fa fa-home"></em></a></li>
+				<li class="active">Admin</li>
+			</ol>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Trang Quản Trị Hệ Thống</h1>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% else %}
+	{% include "login.html" %}
+{% endif %}
